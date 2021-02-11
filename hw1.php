@@ -3,16 +3,28 @@
     echo '***' . PHP_EOL;
 //    Написать функцию, возведения числа N в степень M;
 
+//    function exponentiation($n, $m)
+//    {
+//        if (is_numeric($n) && is_numeric($m)) {
+//
+//            return $n ** $m;
+//        }
+//        return 'вы ввели несколько значений, одно из которых или оба не является числом';
+//    } не хочу совсем удалять, этот вариант мне больше нравится)))
+
     function exponentiation($n, $m)
     {
         if (is_numeric($n) && is_numeric($m)) {
-
-            return $n ** $m;
-        }
-        return 'вы ввели несколько значений, одно из которых или оба не является числом';
+            $e = 1;
+            for ($i = 0; $i < $m; $i++) {
+                $e *= $n;
+            }
+            return $e;
+        };
+        return "вы ввели несколько значений, одно из которых или оба не является числом";
     }
 
-    $result1 = exponentiation(5, 2);
+    $result1 = exponentiation(5, 4);
     $result2 = exponentiation(0, 2);
     $result3 = exponentiation('5', 2);
     $result4 = exponentiation(null, 2);
