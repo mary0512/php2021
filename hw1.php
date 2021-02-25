@@ -37,6 +37,11 @@
     echo '***' . PHP_EOL;
 //    Написать функцию которая выводит первые N чисел Фибоначчи;
 
+    /**
+     * @param $n
+     *
+     * @return float|int
+     */
     function fibonacci($n)
     {
         $sq5 = 5 ** 0.5;
@@ -59,3 +64,71 @@
     var_dump('fibList', fibList(8));
 
     echo '***' . PHP_EOL;
+    /**
+     * Написать функцию которая по параметрам принимает число из десятичной системы счисления и преобразовывает в двоичную.
+     * Написать функцию которая выполняет преобразование наоборот.
+     */
+
+    /**
+     * @param $dec
+     *
+     * @return string
+     */
+
+    echo 'Перевод из десятичной СС в двоичную СС' . PHP_EOL;
+
+
+    function decToBin($dec)
+    {
+        $dec             = floor($dec);
+        $negDec          = $dec < 0;
+        $dec             = abs($dec);
+        $integerDivision = floor($dec / 2);
+        $bin             = '';
+        if ($integerDivision != 0) {
+            $bin .= decToBin($integerDivision);
+        }
+        if ($negDec) {
+            $bin = '-' . $bin;
+        }
+        return $bin .= $dec % 2;
+    }
+
+    var_dump(decToBin(-5));
+    var_dump(decToBin(112));
+
+    echo 'Перевод из двоичной СС в десятичную СС (i--)' . PHP_EOL;
+
+    function binToDec($binNum)
+    {
+        $binNum       = (string)$binNum;
+        $decNum       = 0;
+        $strLenBinNum = strlen($binNum);
+        for ($i = $strLenBinNum - 1; $i >= 0; $i--) {
+//            $decNum += (2 ** ($strLenBinNum - 1 - $i)) * $binNum[$i];
+            $decNum += exponentiation(2, $strLenBinNum - 1 - $i) * $binNum[$i];
+        }
+        return $decNum;
+    }
+
+    var_dump(binToDec(1101010));
+    var_dump(binToDec(101));
+
+    echo 'Перевод из двоичной СС в десятичную СС (i++)' . PHP_EOL;
+
+    function binToDec2($binNum)
+    {
+        $binNum       = (string)$binNum;
+        $decNum       = 0;
+        $strLenBinNum = strlen($binNum);
+        for ($i = 0; $i <= $strLenBinNum - 1; $i++) {
+            $decNum += exponentiation(2, $strLenBinNum - 1 - $i) * $binNum[$i];
+        }
+        return $decNum;
+    }
+
+    var_dump(binToDec2(1101010));
+    var_dump(binToDec2(101));
+
+
+
