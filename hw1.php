@@ -77,7 +77,6 @@
 
     echo 'Перевод из десятичной СС в двоичную СС' . PHP_EOL;
 
-
     function decToBin($dec)
     {
         $dec             = floor($dec);
@@ -105,8 +104,7 @@
         $decNum       = 0;
         $strLenBinNum = strlen($binNum);
         for ($i = $strLenBinNum - 1; $i >= 0; $i--) {
-//            $decNum += (2 ** ($strLenBinNum - 1 - $i)) * $binNum[$i];
-            $decNum += exponentiation(2, $strLenBinNum - 1 - $i) * $binNum[$i];
+            $decNum += exponentiation(2, $strLenBinNum - 1 - $i) * $binNum[$i]; // функция возведения в степень (exponentiation) создана ранее;
         }
         return $decNum;
     }
@@ -130,5 +128,32 @@
     var_dump(binToDec2(1101010));
     var_dump(binToDec2(101));
 
+    echo '***' . PHP_EOL;
 
+    /**  Написать функцию которая вычисляет входит ли IP-адрес в диапазон указанных IP-адресов.
+     * Вычислить для версии ipv4. */
 
+    function ipInRange($startIp, $finishIp, $searchIp)
+    {
+        $startIpLong  = ip2long($startIp);
+        $finishIpLong = ip2long($finishIp);
+        $searchIpLong = ip2long($searchIp);
+
+        if ($startIpLong === false || $finishIpLong === false
+            || $searchIpLong === false) {
+            echo 'Неверный IP-адрес';
+        }
+
+        if ($startIpLong <= $searchIpLong && $searchIpLong <= $finishIpLong) {
+            echo 'IP-адрес в диапазоне указанных IP-адресов';
+        } else {
+            echo 'IP-адрес не входит в диапазон указанных IP-адресов';
+        }
+    }
+
+    ipInRange('1.127.255.100', '128.0.0.0', '2.1.0.0');
+
+    echo '***' . PHP_EOL;
+/**  Для одномерного массива
+Подсчитать процентное соотношение положительных/отрицательных/нулевых/простых чисел
+Отсортировать элементы по возрастанию/убыванию */
