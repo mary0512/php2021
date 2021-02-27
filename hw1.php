@@ -154,6 +154,48 @@
     ipInRange('1.127.255.100', '128.0.0.0', '2.1.0.0');
 
     echo '***' . PHP_EOL;
-/**  Для одномерного массива
-Подсчитать процентное соотношение положительных/отрицательных/нулевых/простых чисел
-Отсортировать элементы по возрастанию/убыванию */
+    /**  Для одномерного массива
+     * Подсчитать процентное соотношение положительных/отрицательных/нулевых/простых чисел
+     * Отсортировать элементы по возрастанию/убыванию */
+    $array = [6, -2, 0, 5];
+
+    function is_prime($num)
+    {
+        for ($i = 2; $i <= sqrt($num); $i++) {
+            if ($num % $i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    function percentNumArray($array)
+    {
+        $countNull     = 0;
+        $countPositive = 0;
+        $countNegative = 0;
+        $countSimple   = 0;
+        $countAllElem  = 0;
+        foreach ($array as $num) {
+            $countAllElem++;
+            if ($num == 0) {
+                $countNull++;
+            }
+            if ($num < 0) {
+                $countNegative++;
+            }
+            if ($num > 0) {
+                $countPositive++;
+                if (is_prime($num)) {
+                    $countSimple++;
+                }
+            }
+        }
+
+        return 'Положительных чисел ' . $countPositive*100/$countAllElem . '%, ' .
+            'отрицательных чисел ' . $countNegative*100/$countAllElem . '%, ' .
+            'нулевых чисел ' . $countNull*100/$countAllElem . '%, ' .
+            'простых чисел ' . $countSimple*100/$countAllElem . '%.';
+    }
+
+    var_dump(percentNumArray($array));
