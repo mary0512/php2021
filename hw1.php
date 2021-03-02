@@ -169,7 +169,29 @@
         return true;
     }
 
-    function percentNumArray($array)
+    function sortMinToMax($array){
+        for ($i = 0; $i < count($array); $i++) {
+            for ($j = $i + 1; $j < count($array); $j++) {
+                if ($array[$i] > $array[$j]) {
+                    [$array[$i], $array[$j]] = [$array[$j], $array[$i]];
+                }
+            }
+        }
+        return $array;
+    }
+
+    function sortMaxToMin($array){
+        for ($i = 0; $i < count($array); $i++) {
+            for ($j = $i + 1; $j < count($array); $j++) {
+                if ($array[$i] < $array[$j]) {
+                    [$array[$i], $array[$j]] = [$array[$j], $array[$i]];
+                }
+            }
+        }
+        return $array;
+    }
+
+        function percentNumArray($array)
     {
         $countNull     = 0;
         $countPositive = 0;
@@ -192,10 +214,12 @@
             }
         }
 
-        return 'Положительных чисел ' . $countPositive*100/$countAllElem . '%, ' .
-            'отрицательных чисел ' . $countNegative*100/$countAllElem . '%, ' .
-            'нулевых чисел ' . $countNull*100/$countAllElem . '%, ' .
-            'простых чисел ' . $countSimple*100/$countAllElem . '%.';
+        return 'Положительных чисел ' . $countPositive * 100 / $countAllElem . '%, ' .
+            'отрицательных чисел ' . $countNegative * 100 / $countAllElem . '%, ' .
+            'нулевых чисел ' . $countNull * 100 / $countAllElem . '%, ' .
+            'простых чисел ' . $countSimple * 100 / $countAllElem . '%.';
     }
 
     var_dump(percentNumArray($array));
+    var_dump(sortMinToMax($array));
+    var_dump(sortMaxToMin($array));
