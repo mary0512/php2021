@@ -1,6 +1,6 @@
 <?php
-    echo 'home work 1' . PHP_EOL;
-    echo '***' . PHP_EOL;
+    echo 'home work 1 <br/>' . PHP_EOL;
+    echo '*** <br/>' . PHP_EOL;
 //    Написать функцию, возведения числа N в степень M;
 
 //    function exponentiation($n, $m)
@@ -21,7 +21,7 @@
             }
             return $e;
         };
-        return "вы ввели несколько значений, одно из которых или оба не является числом";
+        return "вы ввели несколько значений, одно из которых или оба не является числом <br/>";
     }
 
     $result1 = exponentiation(5, 4);
@@ -34,7 +34,7 @@
 
     var_dump($result1, $result2, $result3, $result4, $result5, $result6, $result7);
 
-    echo '***' . PHP_EOL;
+    echo '*** <br/>' . PHP_EOL;
 //    Написать функцию которая выводит первые N чисел Фибоначчи;
 
     /**
@@ -63,7 +63,7 @@
 
     var_dump('fibList', fibList(8));
 
-    echo '***' . PHP_EOL;
+    echo '*** <br/>' . PHP_EOL;
     /**
      * Написать функцию которая по параметрам принимает число из десятичной системы счисления и преобразовывает в двоичную.
      * Написать функцию которая выполняет преобразование наоборот.
@@ -75,7 +75,7 @@
      * @return string
      */
 
-    echo 'Перевод из десятичной СС в двоичную СС' . PHP_EOL;
+    echo 'Перевод из десятичной СС в двоичную СС <br/>' . PHP_EOL;
 
     function decToBin($dec)
     {
@@ -96,7 +96,7 @@
     var_dump(decToBin(-5));
     var_dump(decToBin(112));
 
-    echo 'Перевод из двоичной СС в десятичную СС (i--)' . PHP_EOL;
+    echo 'Перевод из двоичной СС в десятичную СС (i--) <br/>' . PHP_EOL;
 
     function binToDec($binNum)
     {
@@ -112,7 +112,7 @@
     var_dump(binToDec(1101010));
     var_dump(binToDec(101));
 
-    echo 'Перевод из двоичной СС в десятичную СС (i++)' . PHP_EOL;
+    echo 'Перевод из двоичной СС в десятичную СС (i++) <br/>' . PHP_EOL;
 
     function binToDec2($binNum)
     {
@@ -128,7 +128,7 @@
     var_dump(binToDec2(1101010));
     var_dump(binToDec2(101));
 
-    echo '***' . PHP_EOL;
+    echo '*** <br/>' . PHP_EOL;
 
     /**  Написать функцию которая вычисляет входит ли IP-адрес в диапазон указанных IP-адресов.
      * Вычислить для версии ipv4. */
@@ -153,7 +153,7 @@
 
     ipInRange('1.127.255.100', '128.0.0.0', '2.1.0.0');
 
-    echo '***' . PHP_EOL;
+    echo '*** <br/>' . PHP_EOL;
     /**  Для одномерного массива
      * Подсчитать процентное соотношение положительных/отрицательных/нулевых/простых чисел
      * Отсортировать элементы по возрастанию/убыванию */
@@ -214,12 +214,61 @@
             }
         }
 
-        return 'Положительных чисел ' . $countPositive * 100 / $countAllElem . '%, ' .
-            'отрицательных чисел ' . $countNegative * 100 / $countAllElem . '%, ' .
-            'нулевых чисел ' . $countNull * 100 / $countAllElem . '%, ' .
-            'простых чисел ' . $countSimple * 100 / $countAllElem . '%.';
+        return 'Положительных чисел ' . $countPositive * 100 / $countAllElem . '%, <br/>' .
+            'отрицательных чисел ' . $countNegative * 100 / $countAllElem . '%, <br/>' .
+            'нулевых чисел ' . $countNull * 100 / $countAllElem . '%, <br/>' .
+            'простых чисел ' . $countSimple * 100 / $countAllElem . '%. <br/>';
     }
 
     var_dump(percentNumArray($array));
     var_dump(sortMinToMax($array));
     var_dump(sortMaxToMin($array));
+
+    echo '*** <br/>' . PHP_EOL;
+/**Для двумерных массивов
+Транспонировать матрицу
+Умножить две матрицы
+Удалить те строки, в которых сумма элементов положительна и присутствует хотя бы один нулевой элемент. Аналогично для столбцов. */
+    $matrix1 = [[1,2,3],[4,5,6],[7,8,9]];
+    $matrix2 = [[7,8,9],[4,5,6],[1,2,3]];
+    $countElMatrix1=count($matrix1);
+    $countInLastElMatrix1=count($matrix1[$countElMatrix1-1]);
+    $countElMatrix2=count($matrix2);
+    $countInLastElMatrix2=count($matrix2[$countElMatrix2-1]);
+    echo 'Первая матрица :'.'<br/>' . PHP_EOL;
+    for ($row = 0; $row < $countElMatrix1; $row++) {
+        for ($col = 0; $col < $countInLastElMatrix1; $col++)
+            echo ' '.$matrix1[$row][$col];
+        echo '<br/>' . PHP_EOL;
+    }
+    echo 'Вторая матрица :'.'<br/>' . PHP_EOL;
+    for ($row = 0; $row < $countElMatrix2; $row++) {
+        for ($col = 0; $col < $countInLastElMatrix2; $col++)
+            echo ' '.$matrix2[$row][$col];
+        echo '<br/>' . PHP_EOL;
+    }
+    echo 'Транспонирование первой матрицы:'.'<br/>' . PHP_EOL;
+    for ($row = 0; $row < $countElMatrix1; $row++) {
+        for ($col = 0; $col < $countInLastElMatrix1; $col++)
+            echo ' '.$matrix1[$col][$row];
+        echo '<br/>' . PHP_EOL;
+    }
+
+    echo 'Умножение двух матриц:'.' <br/>' . PHP_EOL;
+    $resultMatrix=[];
+    for ($i=0; $i < $countElMatrix1; $i++) {
+        for($j=0; $j < $countInLastElMatrix2; $j++){
+            $resultMatrix[$i][$j] = 0;
+            for($k=0; $k < $countInLastElMatrix1; $k++)
+                $resultMatrix[$i][$j] += $matrix1[$i][$k] * $matrix2[$k][$j];
+        }
+    }
+    for ($row = 0; $row < $countElMatrix1; $row++) {
+        for ($col = 0; $col < $countInLastElMatrix2; $col++){
+            echo ' '.$resultMatrix[$row][$col];
+        }
+        echo '<br/>' . PHP_EOL;
+    }
+
+
+
