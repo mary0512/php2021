@@ -169,7 +169,8 @@
         return true;
     }
 
-    function sortMinToMax($array){
+    function sortMinToMax($array)
+    {
         for ($i = 0; $i < count($array); $i++) {
             for ($j = $i + 1; $j < count($array); $j++) {
                 if ($array[$i] > $array[$j]) {
@@ -180,7 +181,8 @@
         return $array;
     }
 
-    function sortMaxToMin($array){
+    function sortMaxToMin($array)
+    {
         for ($i = 0; $i < count($array); $i++) {
             for ($j = $i + 1; $j < count($array); $j++) {
                 if ($array[$i] < $array[$j]) {
@@ -191,7 +193,7 @@
         return $array;
     }
 
-        function percentNumArray($array)
+    function percentNumArray($array)
     {
         $countNull     = 0;
         $countPositive = 0;
@@ -225,50 +227,102 @@
     var_dump(sortMaxToMin($array));
 
     echo '*** <br/>' . PHP_EOL;
-/**Для двумерных массивов
-Транспонировать матрицу
-Умножить две матрицы
-Удалить те строки, в которых сумма элементов положительна и присутствует хотя бы один нулевой элемент. Аналогично для столбцов. */
-    $matrix1 = [[1,2,3],[4,5,6],[7,8,9]];
-    $matrix2 = [[7,8,9],[4,5,6],[1,2,3]];
-    $countElMatrix1=count($matrix1);
-    $countInLastElMatrix1=count($matrix1[$countElMatrix1-1]);
-    $countElMatrix2=count($matrix2);
-    $countInLastElMatrix2=count($matrix2[$countElMatrix2-1]);
-    echo 'Первая матрица :'.'<br/>' . PHP_EOL;
+    /**Для двумерных массивов
+     * Транспонировать матрицу
+     * Умножить две матрицы
+     * Удалить те строки, в которых сумма элементов положительна и присутствует хотя бы один нулевой элемент. Аналогично для столбцов. */
+    $matrix1              = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+    $matrix2              = [[7, 8, 9], [4, 5, 6], [1, 2, 3]];
+    $countElMatrix1       = count($matrix1);
+    $countInLastElMatrix1 = count($matrix1[$countElMatrix1 - 1]);
+    $countElMatrix2       = count($matrix2);
+    $countInLastElMatrix2 = count($matrix2[$countElMatrix2 - 1]);
+    echo 'Первая матрица :' . '<br/>' . PHP_EOL;
     for ($row = 0; $row < $countElMatrix1; $row++) {
         for ($col = 0; $col < $countInLastElMatrix1; $col++)
-            echo ' '.$matrix1[$row][$col];
+            echo ' ' . $matrix1[$row][$col];
         echo '<br/>' . PHP_EOL;
     }
-    echo 'Вторая матрица :'.'<br/>' . PHP_EOL;
+    echo 'Вторая матрица :' . '<br/>' . PHP_EOL;
     for ($row = 0; $row < $countElMatrix2; $row++) {
         for ($col = 0; $col < $countInLastElMatrix2; $col++)
-            echo ' '.$matrix2[$row][$col];
+            echo ' ' . $matrix2[$row][$col];
         echo '<br/>' . PHP_EOL;
     }
-    echo 'Транспонирование первой матрицы:'.'<br/>' . PHP_EOL;
+    echo 'Транспонирование первой матрицы:' . '<br/>' . PHP_EOL;
     for ($row = 0; $row < $countElMatrix1; $row++) {
         for ($col = 0; $col < $countInLastElMatrix1; $col++)
-            echo ' '.$matrix1[$col][$row];
+            echo ' ' . $matrix1[$col][$row];
         echo '<br/>' . PHP_EOL;
     }
 
-    echo 'Умножение двух матриц:'.' <br/>' . PHP_EOL;
-    $resultMatrix=[];
-    for ($i=0; $i < $countElMatrix1; $i++) {
-        for($j=0; $j < $countInLastElMatrix2; $j++){
+    echo 'Умножение двух матриц:' . ' <br/>' . PHP_EOL;
+    $resultMatrix = [];
+    for ($i = 0; $i < $countElMatrix1; $i++) {
+        for ($j = 0; $j < $countInLastElMatrix2; $j++) {
             $resultMatrix[$i][$j] = 0;
-            for($k=0; $k < $countInLastElMatrix1; $k++)
+            for ($k = 0; $k < $countInLastElMatrix1; $k++)
                 $resultMatrix[$i][$j] += $matrix1[$i][$k] * $matrix2[$k][$j];
         }
     }
     for ($row = 0; $row < $countElMatrix1; $row++) {
-        for ($col = 0; $col < $countInLastElMatrix2; $col++){
-            echo ' '.$resultMatrix[$row][$col];
+        for ($col = 0; $col < $countInLastElMatrix2; $col++) {
+            echo ' ' . $resultMatrix[$row][$col];
         }
         echo '<br/>' . PHP_EOL;
     }
 
+    echo 'Удалить те строки, в которых сумма элементов положительна и присутствует хотя бы один нулевой элемент.
+     Аналогично для столбцов:' . ' <br/>' . PHP_EOL;
 
+    $myMatrix = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+    ];
 
+    function rowRemove($myMatrix)
+    {
+        for ($i = 0; $i < count($myMatrix); $i++) {
+            $summElRow = 0;
+            $rowHas0   = false;
+            for ($j = 0; $j < count($myMatrix[$i]); $j++) {
+                $summElRow += $myMatrix[$i][$j];
+                if ($myMatrix[$i][$j] == 0) {
+                    $rowHas0 = true;
+                }
+            }
+            if ($summElRow > 0 && $rowHas0) {
+                unset($myMatrix[$i]);
+                $myMatrix = array_values($myMatrix);
+            }
+        }
+        return $myMatrix;
+    }
+
+    var_dump(rowRemove($myMatrix));
+
+    function colRemove($myMatrix)
+    {
+        for ($i = 0; $i < count($myMatrix[$i]); $i++) {
+            $summElCol = 0;
+            $colHas0   = false;
+            for ($j = 0; $j < count($myMatrix); $j++) {
+                $summElCol += $myMatrix[$j][$i];
+                if ($myMatrix[$j][$i] == 0) {
+                    $colHas0 = true;
+                }
+            }
+            if ($summElCol > 0 && $colHas0) {
+                foreach ($myMatrix as $row_index => $row) {
+                    unset($myMatrix[$row_index][$i]);
+                }
+            }
+        }
+        foreach ($myMatrix as $row_index => $row) {
+            $myMatrix[$row_index] = array_values($myMatrix[$row_index]);
+        }
+
+        return $myMatrix;
+    }
+var_dump(colRemove($myMatrix));
