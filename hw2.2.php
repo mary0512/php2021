@@ -1,5 +1,8 @@
 <?php
 
+//    spl_autoload_register();
+    include 'MyLogger.php';
+
     interface Shape
     {
         public function perimetr();
@@ -14,6 +17,7 @@
 
         public function __construct($width, $height)
         {
+            MyLogger::info('Прямоугольник');
             if (!is_numeric($width) || !is_numeric($height) || $width <= 0 || $height <= 0) {
                 throw new Exception(self::class . ' Некорректный ввод данных');
             }
@@ -36,14 +40,14 @@
         $rectangle = new Rectangle('3ррр', 5);
         var_dump('$rectangle', $rectangle->perimetr(), $rectangle->square());
     } catch (Exception $e) {
-        var_dump($e->getMessage());
+        MyLogger::error($e->getMessage());
     }
 
     try {
         $rectangle1 = new Rectangle(8, 11);
         var_dump('$rectangle1', $rectangle1->perimetr(), $rectangle1->square());
     } catch (Exception $e) {
-        var_dump($e->getMessage());
+        MyLogger::error($e->getMessage());
     }
 
 
@@ -74,14 +78,14 @@
         $circle = new Circle(8);
         var_dump('$circle', $circle->perimetr(), $circle->square());
     } catch (Exception $e) {
-        var_dump($e->getMessage());
+        MyLogger::error($e->getMessage());
     }
 
     try {
         $circle1 = new Circle('jj3');
         var_dump('$circle1', $circle1->perimetr(), $circle1->square());
     } catch (Exception $e) {
-        var_dump($e->getMessage());
+        MyLogger::error($e->getMessage());
     }
 
     class Triangle implements Shape
@@ -125,12 +129,12 @@
         $triangle  = new Triangle(3, 5, 4);
         var_dump('$triangle', $triangle->perimetr(), $triangle->square());
     } catch (Exception $e) {
-        var_dump($e->getMessage());
+        MyLogger::error($e->getMessage());
     }
 
     try {
         $triangle1 = new Triangle(-38, 15, 41);
         var_dump('$triangle1', $triangle1->perimetr(), $triangle1->square());
     } catch (Exception $e) {
-        var_dump($e->getMessage());
+        MyLogger::error($e->getMessage());
     }
