@@ -1,0 +1,22 @@
+{
+    "name": "nikiforova/mvc",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marina Nikiforova",
+            "email": "seniorina.mari@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Framework\\": "framework",
+            "App\\": "app"
+        },
+        "files": [
+            "app/config.php",
+            "app/routes.php"
+        ]
+    }
+}
