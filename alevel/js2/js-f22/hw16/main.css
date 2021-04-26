@@ -1,0 +1,28 @@
+body, .container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.sidebar {
+    margin: 10px 0 30px;
+    width: 100%;
+}
+
+.card {
+    margin: 0 0 5px;
+    padding: 0 5px;
+    width: calc(100% / 4);
+    /* max-width: 200px; */
+    height: 400px;
+    border: 1px solid red;
+    text-align: center;
+}
+.card * {
+    padding: 5px;
+}
+.card img {
+    width: 15vw;
+    height: 15vh;
+}
