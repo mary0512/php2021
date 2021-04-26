@@ -1,0 +1,36 @@
+body {
+    background: rgb(26, 22, 22);
+}
+
+form {
+    bottom: 10px;
+    position: fixed
+}
+
+ul  {
+    height: calc(100vh - 300px);
+    overflow: scroll;
+    padding: 0;
+}
+p {
+    color: green;
+    font-size: 30px; 
+}
+li {
+    margin: 0;
+    color: green;
+    font-size: 30px;
+    list-style: none;
+}
+
+input {
+    height: 60px;
+    font-size: 24px;
+    width: 500px;
+    display: block;
+    margin: 10px 0 0;
+    background: transparent;
+    color: green;
+    outline: none;
+    border: transparent;
+}

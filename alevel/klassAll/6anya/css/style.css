@@ -1,0 +1,348 @@
+html {
+  width: auto;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+#header {
+  display: flex;
+  background: #d3b714;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+.menu {
+  display: flex;
+  list-style: none;
+}
+.menu a {
+  color: black;
+  text-decoration: none;
+  font-size: 18px;
+  margin: 0 10px;
+}
+.menu a:hover {
+  font-weight: bold;
+  border-bottom: 3px solid #2ec1ce;
+  color: #fe6733;
+}
+#main {
+  display: flex;
+  flex: 1 0 auto;
+}
+#container {
+  background: white;
+  order: 0;
+}
+#sidebar {
+  background: #c798b9;
+  width: 210px;
+  order: -1;
+  flex-shrink: 0;
+}
+.sidebar {
+  background: #9cb1c7;
+  width: 210px;
+  order: 1;
+  flex-shrink: 0;
+}
+#footer {
+  background: #86ec86;
+  align-items: flex-end;
+}
+p {
+  text-align: center;
+  margin: 10px 10px;
+  font-size: 18px;
+}
+h1 {
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 25px;
+}
+h2 {
+  font-weight: bold;
+  text-align: center;
+  font-size: 18px;
+}
+.all_lorem {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  justify-content: space-around;
+}
+.lorem {
+  border: 2px solid #979797;
+  border-radius: 25px;
+  padding: 15px 15px;
+  flex: 1 0 30%;
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  justify-content: center;
+  min-height: 50vh;
+}
+.lorem > p {
+  flex: 1 0 auto;
+}
+.lorem img {
+  width: 150px;
+  border-radius: 100%;
+  border: 5px solid #9db3c8;
+  background: cadetblue;
+  transition: transform 1s;
+  align-self: center;
+}
+.lorem img:hover {
+  border: 5px solid cadetblue;
+  background: #9db3c8;
+  transform: scale(-1, 1);
+}
+.lorem > a {
+  list-style: none;
+  background-color: cadetblue;
+  color: white;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 5px 15px;
+  align-self: center;
+}
+.lorem > a:hover {
+  background: #9db3c8;
+}
+.holder {
+  display: flex;
+  border: 2px solid black;
+  border-radius: 30px 30px 0 0;
+  flex-wrap: wrap;
+  width: auto;
+}
+.item {
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  padding: 5px 15px;
+}
+.item:nth-of-type(1) {
+  order: -2;
+  background: #fd644c;
+  flex: 2 0 50%;
+  border-radius: 30px 0 0 0;
+}
+.item:nth-of-type(2) {
+  order: 1;
+  background: #4784b3;
+  flex: 1 0 33%;
+}
+.item:nth-of-type(3) {
+  order: 0;
+  background: #663498;
+  flex: 1 0 33%;
+}
+.item:nth-of-type(4) {
+  order: 2;
+  background: #05800a;
+  flex: 1 0 33%;
+}
+.item:nth-of-type(5) {
+  order: -1;
+  background: #fda524;
+  border-radius: 0 30px 0 0;
+  flex: 2 0 50%;
+}
+/*2. Второй уровень ("бургер") - у меня появляется при размере экрана 575 пикселей*/
+#menu-check {
+  position: absolute;
+  opacity: 0;
+  display: none;
+  right: -220px;
+}
+.menu-button {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 20px;
+  right: -220px;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  z-index: 1;
+}
+.menu-button > span,
+.menu-button > span::before,
+.menu-button > span::after {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #616161;
+}
+.menu-button > span::before {
+  content: "";
+  top: -8px;
+}
+.menu-button > span::after {
+  content: "";
+  top: 8px;
+}
+.menu-items {
+  display: block;
+  position: fixed;
+  visibility: hidden;
+  top: 0;
+  right: -100%;
+  width: auto;
+  height: 100%;
+  margin: 0;
+  padding: 80px 0;
+  list-style: none;
+  background-color: #d3b714;
+  box-shadow: 1px 0px 6px rgba(0, 0, 0, 0.2);
+}
+.menu-item {
+  display: block;
+  padding: 12px 24px;
+  color: #fd644c;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.menu-item:hover {
+  border-bottom: 3px solid #2ec1ce;
+}
+#menu-check:checked ~ .menu-button > span {
+  transform: rotate(45deg);
+}
+#menu-check:checked ~ .menu-button > span::before {
+  top: 0;
+  transform: rotate(0);
+}
+#menu-check:checked ~ .menu-button > span::after {
+  top: 0;
+  transform: rotate(90deg);
+}
+#menu-check:checked ~ .menu-items {
+  visibility: visible;
+  right: 0;
+}
+/*1. Первый уровень ("Мой первый респонсив") - 
+когда ни разу не дизайнер и воображения нет*/
+@media (max-width: 991px) {
+  #sidebar,
+  .sidebar {
+    width: 100px;
+  }
+  p {
+    font-size: 15px;
+    margin: 5px 5px;
+  }
+  h1 {
+    font-size: 20px;
+    margin: 8px 8px;
+  }
+  h2 {
+    font-size: 15px;
+    margin: 5px 5px;
+  }
+  .lorem {
+    padding: 5px 5px;
+  }
+  .lorem img {
+    width: 120px;
+  }
+  .lorem a {
+    font-size: 15px;
+    padding: 5px 10px;
+  }
+}
+@media (max-width: 767px) {
+  #main {
+    flex-wrap: wrap;
+  }
+  #sidebar {
+    order: -2;
+    width: calc(100% / 2);
+  }
+  .sidebar {
+    order: -1;
+    width: calc(100% / 2);
+  }
+  p {
+    font-size: 15px;
+    margin: 5px 5px;
+  }
+  h1 {
+    font-size: 20px;
+    margin: 8px 8px;
+  }
+  h2 {
+    font-size: 15px;
+    margin: 5px 5px;
+  }
+  .lorem {
+    padding: 5px 5px;
+  }
+  .lorem img {
+    width: 120px;
+  }
+  .lorem a {
+    font-size: 15px;
+    padding: 5px 10px;
+  }
+}
+@media (max-width: 575px) {
+  #main {
+    flex-direction: column;
+  }
+  #sidebar {
+    order: -2;
+    width: calc(100% / 2);
+    margin: 0 auto;
+  }
+  .sidebar {
+    order: -1;
+    width: calc(100% / 2);
+    margin: 0 auto;
+  }
+  p {
+    font-size: 12px;
+    margin: 5px 5px;
+  }
+  h1 {
+    font-size: 18px;
+    margin: 8px 8px;
+  }
+  h2 {
+    font-size: 12px;
+    margin: 5px 5px;
+  }
+  .lorem {
+    padding: 5px 5px;
+  }
+  .lorem img {
+    width: 120px;
+  }
+  .lorem a {
+    font-size: 10px;
+    padding: 5px 10px;
+  }
+  .menu-button {
+    position: absolute;
+    right: 20px;
+    top: 30px;
+  }
+  .menu {
+    position: absolute;
+    top: -200px;
+  }
+  #menu-check {
+    display: flex;
+    position: absolute;
+    opacity: 0;
+    right: 20px;
+  }
+}

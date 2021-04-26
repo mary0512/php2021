@@ -1,0 +1,175 @@
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+.cards {
+    position: relative;
+    background-color: #0d5825;
+    width: 600px;
+    height: 600px;
+    margin-left: 10px;    
+}
+
+.card {
+    position: absolute;
+    width: 150px;
+    transition: top 0.2s 0.2s;
+}
+
+blockquote {
+    position: relative;
+    color: white;
+    font-size: 25px;
+    text-align: center;
+    top: 30px;
+}
+
+.card1 {
+    transform: rotate(-20deg);
+    left: 150px;
+    top: 40%;
+}
+
+.card2 {
+    transform: rotate(-7deg);
+    left: 200px;
+    top: 42%;
+}
+
+.card3 {
+    transform: rotate(7deg);
+    left: 250px;
+    top: 45%;
+}
+
+.card1:hover {
+    top: 37%;
+}
+
+.card2:hover {
+    top: 39%;
+}
+
+.card3:hover {
+    top: 42%;
+}
+
+.boxes {
+    position: relative;
+    width: 600px;
+    height: 600px;
+    margin-left: 10px;
+}
+
+.box {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+}
+
+.pink {
+    left: 100px;
+    top: 100px;
+    background: rgb(255, 102, 153);
+}
+
+.violet {
+    z-index: 2;
+    left: 160px;
+    top: 160px;
+    background: rgb(148, 102, 255); 
+}
+
+.green {
+    left: 220px;
+    top: 220px;
+    background: rgb(102, 255, 196); 
+}
+
+.menu-hold {
+    position: relative;
+    width: 200px;
+    height: 400px;
+    background: #888;
+    transition: transform 0.5s 0s;
+    transform: translateX(-100%);
+}
+
+.menu-hold:hover {
+    transform: translateX(0);
+}
+
+.menu-hold:after {
+    position: absolute;
+    content: "MENU HERE";
+    writing-mode: vertical-rl;
+    text-align: center;
+    background: #888;
+    color: white;
+    height: 100%;
+    left: 100%;
+    transition: color 0.2s 0.2s;
+}
+
+.menu-hold:hover:after {
+    color: #888;
+}
+
+.menu-hold > ul {
+    position: absolute;
+    text-transform: uppercase;
+    top: 30px;
+}
+
+.menu1 > li > a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s 0s;
+}
+
+.menu1 > li > a:hover {
+    color: goldenrod;
+}
+
+.menu1 > li {
+    margin-top: 5px;
+    list-style: none;
+}
+
+li::before {
+    display: inline-block;
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: goldenrod;
+    margin-right: 10px;
+    border: 1px solid black;
+    transform: rotate(45deg);
+}
+
+.anime {
+    position: relative;
+    width: 300px;
+    height: 300px;
+}
+
+.square {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    animation: bububu 4s linear 0s infinite normal both; 
+}
+
+@keyframes bububu {
+    0% {top: 0; left: 0; background-color: red; }
+    12.5%{top: 100px; left: 0; background-color: purple;}
+    25%{top: 200px; left: 0; background-color: blue;}
+    37.5%{top: 200px; left: 100px; background-color: lightblue;}
+    50%{top: 200px; left: 200px;background-color: green;}
+    62.5%{top: 100px; left: 200px;background-color: lawngreen;}
+    75%{top: 0; left: 200px;background-color: yellow;}
+    87.5%{top: 0; left: 100px;background-color: orange;}
+    100%{top: 0; left: 0; background-color: red;}
+}

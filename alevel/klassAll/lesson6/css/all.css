@@ -1,0 +1,212 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+body {
+  font-size: 25px;
+}
+#wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.container {
+  display: flex;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 25px;
+}
+h2 {
+  font-size: 50px;
+}
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.box {
+  position: relative;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background: rgb(14, 189, 87);
+  transition: box-shadow 0.3s;
+}
+.box:after {
+  position: absolute;
+  content: "";
+  /* line-height: ; */
+  top: 50%;
+  left: 0;
+  bottom: 50%;
+  right: 0;
+  background: rgba(102, 107, 208, 0.6);
+  opacity: 0;
+  transition: all 0.8s;
+}
+.box:before {
+  position: absolute;
+  content: "\2615";
+  font-size: 40px;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.8s;
+}
+.box:hover {
+  box-shadow: 0 0 5px #000;
+}
+.box:hover:after,
+.box:hover:before {
+  opacity: 1;
+}
+.box:hover:after {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.icon {
+  font-size: 50px;
+  margin-right: 15px;
+}
+.menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+}
+
+.menu li {
+  padding: 10px;
+}
+.menu li:nth-child(4) {
+  order: -1;
+}
+.logo {
+  font-size: 50px;
+}
+#header {
+  position: relative;
+  z-index: 1;
+}
+#header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.block {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: rgb(233, 191, 191);
+}
+.block-header {
+  flex-grow: 1;
+  background: yellow;
+}
+.block-content {
+  background: green;
+  flex-grow: 3;
+}
+.block-footer {
+  flex-grow: 2;
+  background: blue;
+}
+.list li {
+  display: flex;
+  width: calc(100% / 3);
+  padding: 0 30px 30px;
+}
+
+/* скрываем чекбокс */
+#menu__toggle {
+  opacity: 0;
+  position: absolute;
+}
+
+/* стилизуем кнопку */
+.menu__btn {
+  /* используем flex для центрирования содержимого */
+  align-items: center; /* центрируем содержимое кнопки */
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  z-index: 1;
+  display: none;
+}
+
+/* добавляем "гамбургер" */
+.menu__btn > span,
+.menu__btn > span::before,
+.menu__btn > span::after {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #616161;
+}
+.menu__btn > span::before {
+  content: "";
+  top: -8px;
+}
+.menu__btn > span::after {
+  content: "";
+  top: 8px;
+}
+
+.menu__box {
+  display: flex;
+  list-style: none;
+}
+.menu__box > li {
+  padding: 5px;
+}
+
+@media (max-width: 992px) {
+  h2 {
+    font-size: 30px;
+  }
+  .list li {
+    width: 50%;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 20px;
+  }
+}
+@media (max-width: 767px) {
+  .list li {
+    width: 100%;
+  }
+  .menu__btn {
+    display: flex;
+  }
+  #menu__toggle:checked ~ .menu__box {
+    max-height: 400px;
+  }
+  .menu__box {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    padding: 0;
+    margin: 0;
+    display: block;
+    background: #ccc;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.8s;
+  }
+}

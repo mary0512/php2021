@@ -1,0 +1,5 @@
+// 8
+- http://joxi.ru/zANWGGWC6bJj0r на ховер болдовость лучше не ставить
+- http://joxi.ru/MAjqZZqfxVRkq2 что-то не то потянула
+- http://joxi.ru/8AnqOOqf7B1o82 основной контент должен быть сверху
+- http://joxi.ru/zANWGGWC6bJ80r меню должно пропадать при увеличении ширины экрана
